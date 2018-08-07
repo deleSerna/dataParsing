@@ -45,4 +45,8 @@ export LANG=en_US.UTF-8
   Running setup.py install for en-core-web-md ... done
 Successfully installed en-core-web-md-2.0.0
  You can now load the model via spacy.load('en_core_web_md')
+ 
+ python -m spacy link en_core_web_md en
+ 
+ python -m rasa_nlu.train --config config/config_spacy.yml  --data resources/data/demo-rasa.json  --path projects
 
