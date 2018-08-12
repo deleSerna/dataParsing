@@ -1,0 +1,52 @@
+Installation issues faced for Mac os Sierra
+
+curl https://bootstrap.pypa.io/get-pip.py -O
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1604k  100 1604k    0     0  1273k      0  0:00:01  0:00:01 --:--:-- 1274k
+
+python  get-pip.py  --user
+ pip install  --user rasa_nlu
+
+ pip install --user  rasa_nlu[spacy]
+
+Installing collected packages: scikit-learn, python-crfsuite, tabulate, sklearn-crfsuite, murmurhash, cymem, preshed, msgpack, msgpack-numpy, toolz, cytoolz, wrapt, plac, dill, thinc, ujson, regex, spacy
+  Running setup.py install for tabulate ... done
+  Running setup.py install for murmurhash ... done
+  Running setup.py install for preshed ... done
+  Running setup.py install for msgpack ... done
+  Running setup.py install for toolz ... done
+  Running setup.py install for cytoolz ... done
+  Running setup.py install for wrapt ... done
+  Running setup.py install for dill ... done
+  Running setup.py install for thinc ... done
+  Running setup.py install for ujson ... done
+  Running setup.py install for regex ... done
+  Running setup.py install for spacy ... done
+Successfully installed cymem-1.31.2 cytoolz-0.9.0.1 dill-0.2.8.2 msgpack-0.5.6 msgpack-numpy-0.4.3.1 murmurhash-0.28.0 plac-0.9.6 preshed-1.0.1 python-crfsuite-0.9.6 regex-2017.4.5 scikit-learn-0.19.2 sklearn-crfsuite-0.3.6 spacy-2.0.12 tabulate-0.8.2 thinc-6.10.3 toolz-0.9.0 ujson-1.35 wrapt-1.10.11
+python -m spacy download en_core_web_md
+/usr/bin/python: No module named spacy
+
+  python  -m spacy download en_core_web_md
+ ......
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/locale.py", line 562, in getlocale
+    return _parse_localename(localename)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/locale.py", line 475, in _parse_localename
+    raise ValueError, 'unknown locale: %s' % localename
+ValueError: unknown locale: UTF-8
+vi ~/.bash_profile
+. ~/.bash_profile 
+
+cat ~/.bash_profile 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+ python  -m spacy download en_core_web_md --user
+
+  Running setup.py install for en-core-web-md ... done
+Successfully installed en-core-web-md-2.0.0
+ You can now load the model via spacy.load('en_core_web_md')
+ 
+ python -m spacy link en_core_web_md en
+ 
+ python -m rasa_nlu.train --config config/config_spacy.yml  --data resources/data/demo-rasa.json  --path projects
+
