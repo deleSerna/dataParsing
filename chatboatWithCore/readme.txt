@@ -19,3 +19,9 @@ Need to improve in above model
     sol - To improve it we can add synonyms and regex as in http://rasa.com/docs/nlu/master/dataformat/#section-dataformat
 
 3. How to write a generic story
+
+
+rsa nlu 
+ - find intent (purpose ) of the chat eg: restuarant search, greeting
+ - find entities in the text ( eg: cusine, location)
+Nlp - convert free from text into structured data in a particular domain - Means Named Entity Recognition in a paticular domain
