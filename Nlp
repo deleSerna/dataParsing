@@ -1,3 +1,10 @@
 NLP
 Topic Identification - intent
 Text classification - entity redcognition
+
+ nlp.tokenize  - word_tokenize(), regexp_tokenize()
+ Counter from collections - can find out the most_common words
+ preprocessing techinques 
+   - lower casing , lemmatization(only stem words) and 
+   - removing unwanted tokens - use stopwords library
+gensim library - to create a bag of words
