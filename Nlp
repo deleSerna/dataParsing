@@ -8,3 +8,52 @@ Text classification - entity redcognition
    - lower casing , lemmatization(only stem words) and 
    - removing unwanted tokens - use stopwords library
 gensim library - to create a bag of words
+
+tfidf - term frequency inverse document frequency
+       from gensim.models.tfidfmodel import TfidfModel
+namedEntuty recognition - recognize people, place , org, dates, state, works of art etc.  depending upon the library
+   nltk and standfor core nlp library also there
+   
+    In [1]: import nltk
+
+In [2]: sentence = '''In New York, I like to ride the Metro to visit MOMA 
+                      and some restaurants rated well by Ruth Reichl.'''
+
+In [3]: tokenized_sent = nltk.word_tokenize(sentence)
+In [4]: tagged_sent = nltk.pos_tag(tokenized_sent)
+pass this into for chunking
+print(nltk.ne_chunk(tagged_sent))
+
+
+# Tokenize the article into sentences: sentences
+sentences = nltk.sent_tokenize(article)
+
+# Tokenize each sentence into words: token_sentences
+token_sentences = [nltk.word_tokenize(sent) for sent in sentences]
+
+# Tag each tokenized sentence into parts of speech: pos_sentences
+pos_sentences = [nltk.pos_tag(sent) for sent in token_sentences] 
+
+# Create the named entity chunks: chunked_sentences
+chunked_sentences = nltk.ne_chunk_sents(pos_sentences,binary=True)
+
+# Test for stems of the tree with 'NE' tags
+for sent in chunked_sentences:
+    for chunk in sent:
+        if hasattr(chunk, "label") and chunk.label() == "NE":
+            print(chunk)
+
+Spacy is another library for NER
+
+import spacy
+
+# Instantiate the English model: nlp
+nlp = spacy.load('en', tagger=False, parser=False, matcher=False)
+
+# Create a new document: doc
+doc = nlp(article)
+
+# Print all of the found entities and their labels
+for ent in doc.ents:
+    print(ent.label_, ent.text)
+   
